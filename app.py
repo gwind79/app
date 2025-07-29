@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/start', methods=['GET'])
 def start_calculator():
-    subprocess.Popen("righello_adv.py")
+    subprocess.Popen(['python', 'righello_adv.py'], shell=True)
     time.sleep(1)
     return "Roboclick avviato"
 
