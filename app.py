@@ -4,9 +4,7 @@ import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-@app.route('/')
-def home():
-    return "Server Flask attivo su Render!"
+
 app = Flask(__name__)
 CORS(app)  # Abilita CORS
 
