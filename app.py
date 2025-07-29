@@ -1,7 +1,9 @@
-import os
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # <--- IMPORTA QUESTO
 
 app = Flask(__name__)
+CORS(app)  # <--- ABILITA CORS PER TUTTE LE ROTTE
+
 AUTH_TOKEN = "mio_token_sicuro"
 
 @app.route('/')
@@ -18,5 +20,6 @@ def press_key():
     return jsonify({"status": "ok", "key": key})
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))  # default in locale
+    import os
+    port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
