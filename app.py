@@ -1,15 +1,12 @@
-from flask import Flask, request
 import subprocess
-import pyautogui
 import time
+from flask import Flask, request, jsonify
+from flask_cors import CORS  # <--- IMPORTA QUESTO
 
 app = Flask(__name__)
 
 @app.route('/start', methods=['GET'])
 def start_calculator():
-    #subprocess.Popen('calc.exe')
-    #path = os.getcwd()
-    #path1 = os.path.join("righello_adv.py") 
     subprocess.Popen("righello_adv.py")
     time.sleep(1)
     return "Roboclick avviato"
@@ -18,7 +15,6 @@ def start_calculator():
 def press_key():
     key = request.json.get('key')
     if key:
-        pyautogui.press(key)
         return f"Premuto: {key}"
     return "Chiave non valida", 400
 
